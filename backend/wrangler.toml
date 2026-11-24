@@ -23,21 +23,21 @@ APP_VERSION = "1.9.0"
 
 # 站点主地址 — 邮件模板里的「访问站点」链接、反馈通知页脚
 # 必须与真实访问域一致，否则邮件里的链接指向错误页面
-SITE_URL = "https://atlas.wort.uk"
+SITE_URL = "https://wangheshan.cc.cd"
 
 # R2 封面公网域名 — 先在 R2 面板创建 atlas-media bucket 并绑定该自定义域，
 # 未配置时代理会从 R2 直出字节（功能不受影响，但没有 CDN 加速）
-MEDIA_PUBLIC_BASE = "https://img.atlas.wort.uk"
+MEDIA_PUBLIC_BASE = ""
 
 # 前端域名 — OAuth 回调后跳转目标
-FRONTEND_URL = "https://atlas.wort.uk"
+FRONTEND_URL = "https://wangheshan.cc.cd"
 
 # 后端 API 域名 — 用于 OAuth callback URI 构造；前端已同源，API 不再单独用子域
-BACKEND_URL = "https://atlas.wort.uk"
+BACKEND_URL = "https://wangheshan.cc.cd"
 
 # Cloudflare 发件人 — 绑定 Cloudflare Email Sending 的已 onboard 域名，改了必须重新部署
 # 其它服务商使用各自的发件子域名（在 backend/src/services/email-sender.ts 中固定绑定）
-DEFAULT_FROM_EMAIL = "noreply@mail.wort.uk"
+DEFAULT_FROM_EMAIL = "noreply@wangheshan.cc.cd"
 DEFAULT_FROM_NAME = "Atlas"
 
 # JWT 过期天数 — 安全策略，属于环境级决策
@@ -48,7 +48,7 @@ ENABLE_ACTION_LOGGING = "true"
 
 # GitHub Actions 调度：仓库固定；PAT 通过 wrangler secret 注入（GITHUB_DISPATCH_TOKEN）
 # Worker 每 30 分钟 dispatch follow-upcoming-sync.yml，弥补 GitHub 原生 schedule 的延迟/跳过
-GITHUB_REPOSITORY = "Zoroaaa/Atlas"
+GITHUB_REPOSITORY = "aklancc/Atlas"
 GITHUB_DISPATCH_REF = "main"
 
 # AI 别名候选生成（旁路）：默认关闭；开启前需在下方声明 [ai] binding 并部署
@@ -78,7 +78,7 @@ ENABLE_ALIAS_AI = "0"
 [[d1_databases]]
 binding = "DB"
 database_name = "codeseek"
-database_id = "42216a7e-3dbb-4feb-9974-2a8ee32af550"
+database_id = "aa149605-8d33-4119-9d34-fdf7cc55bb4b"
 migrations_dir = "../database/migrations"
 
 # R2 封面缓存
@@ -90,11 +90,8 @@ bucket_name = "atlas-media"
 # wrangler dev --remote 时才需要
 # preview_bucket_name = "atlas-media-preview"
 
-# Cloudflare Email Service（Workers Paid 的 Email Sending）
-# 发送域名需先在 Cloudflare 面板 Compute → Email Service → Email Sending 完成 onboard。
-# 未配置或被管理端切换为 Resend 时不会使用该绑定。
-[[send_email]]
-name = "EMAIL"
+# 免费 Workers 部署不绑定 Cloudflare Email Sending（该功能需要 Workers Paid）。
+# 邮件可后续通过 RESEND_API_KEY / MAILTRAP_API_TOKEN / BREVO_API_KEY 接入外部服务商。
 
 # Workers AI（可选）：启用 ENABLE_ALIAS_AI 时取消注释。
 # 账号未开通 Workers AI 时保留注释，否则部署会失败。
