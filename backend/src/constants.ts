@@ -15,8 +15,8 @@ export const CONFIG = {
 
   // ── 默认域名（环境变量未设置时的兜底，正式部署以 wrangler.toml 为准） ──
   DEFAULT_URLS: {
-    FRONTEND: 'https://atlas.wort.uk',
-    BACKEND: 'https://atlas.wort.uk',
+    FRONTEND: 'https://wangheshan.cc.cd',
+    BACKEND: 'https://wangheshan.cc.cd',
   },
 
   // ── 正则表达式（格式规则，改动需同步验证逻辑） ──
@@ -52,8 +52,8 @@ export const CONFIG = {
     ALLOW_HEADERS: ['Content-Type', 'Authorization', 'X-Requested-With'],
     EXPOSE_HEADERS: ['Content-Length', 'X-Request-Id'],
     ALLOWED_ORIGINS: [
-      'https://atlas.wort.uk',
-      'https://www.atlas.wort.uk',
+      'https://wangheshan.cc.cd',
+      'https://www.wangheshan.cc.cd',
       'http://localhost:3000',
       'http://127.0.0.1:3000',
     ],
